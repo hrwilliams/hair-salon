@@ -1,6 +1,6 @@
 require("rspec")
 require("pg")
-require("task")
+require("client")
 
 DB = PG.connect({:dbname => 'hair_salon_test'})
 
@@ -11,4 +11,11 @@ RSPEC.configure do |config|
 end
 
 describe(Client) do
-end  
+  describe ("#==")
+  it("is the same client if it has the same name") do
+    client1 = Client.new({:name => "H. Bag"})
+    client2 = Client.new({:name => "H. Bag"})
+    expect(client1).to(eq(client2))
+    end
+  end
+end
