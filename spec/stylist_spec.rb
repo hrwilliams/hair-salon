@@ -14,6 +14,14 @@ describe(Stylist) do
     end
   end
 
+  describe("#id") do
+    it("sets its ID when you save it") do
+      stylist = Stylist.new({:name => "Tommy RR Barber", :id => nil})
+      stylist.save()
+      expect(stylist.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe("#save") do
     it("lets you save stylists to the database") do
       stylist = Stylist.new({:name => "Tommy RR Barber", :id => nil})
@@ -22,11 +30,11 @@ describe(Stylist) do
     end
   end
 
-  describe("#id") do
-    it("sets its ID when you save it") do
-      stylist = Stylist.new({:name => "Tommy RR Barber", :id => nil})
-      stylist.save()
-      expect(stylist.id()).to(be_an_instance_of(Fixnum))
+  describe("#==") do
+    it ("is the same stylist if it has the same name") do
+      stylist1 = Stylist.new({:name => "Tommy RR Barbur", :id => nil})
+      stylist2 = Stylist.new({:name => "Tommy RR Barbur", :id => nil})
+      expect(stylist1).to(eq(stylist2))
     end
   end
 end

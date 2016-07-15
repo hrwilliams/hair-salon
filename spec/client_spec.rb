@@ -23,12 +23,10 @@ describe(Client) do
   end
 
   describe ("#==") do
-  it("is the same client if it has the same name") do
-    client1 = Client.new({:name => "Hair Bag"})
-    client2 = Client.new({:name => "Hair Bag"})
+    it("is the same client if it has the same name") do
+      client1 = Client.new({:name => "Hair Bag"})
+      client2 = Client.new({:name => "Hair Bag"})
     expect(client1).to(eq(client2))
     end
   end
-
-
 end
