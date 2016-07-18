@@ -1,6 +1,42 @@
-<h1>Welcome to the Hair Salon App</h1>
+<!-- <h1>Welcome to the Hair Salon App</h1>
 
 <div class="container">
   <a href="/stylists">View All Stylists</a>
   <a href="/stylists/new">Add New Stylist</a>
-</div>
+</div> -->
+
+
+<h1>Hair Salon</h1>
+
+<p>Create a new stylist:</p>
+
+<form action="/styists" method="post">
+  <label for="name">Stylist name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add stylist</button>
+</form>
+
+<p> Add clients to any list:</p>
+
+<form action="/clients" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+
+  <label for="name">Name of the client:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add task</button>
+</form>
+
+
+<% if @lists.any?() %>
+<p>Click on a list to see its tasks:</p>
+
+<ul>
+  <% @lists.each do |list| %>
+  <li><a href="/lists/<%= list.id() %>"><%= list.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no lists yet!</p>
+<% end %>
