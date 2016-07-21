@@ -4,9 +4,9 @@ require("./lib/client")
 require("./lib/stylist")
 also_reload("lib/**/*.rb")
 require("pg")
-# require("pry")
+require("pry")
 
-DB = PG.connect({:dbname => "hair_salon"})
+DB = PG.connect({:dbname => "hair_salon_test"})
 
 get("/") do
   erb(:index)
@@ -23,7 +23,7 @@ post("/stylists") do
   erb(:stylist_success)
 end
 
-get('stylists') do
+get('/stylists') do
   @stylists = Stylist.all()
   erb(:stylists)
 end
