@@ -16,13 +16,10 @@
 
   <ul>
     <% @stylist.clients().each() do |client| %>
-      <li><%= client.name() %> </li>
+      <li><a href="/clients/<%= client.id() %>"><%= client.name() %></a> </li>
     <% end %>
   </ul>
 
   <% else %>
     <p>This stylist has no clients!</p>
   <% end %>
-
-<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %> stylist</a></p>  
-<a href="/">Return to Main Page</a>
