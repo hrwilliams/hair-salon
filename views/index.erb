@@ -1,6 +1,39 @@
-<h1>Welcome to the Hair Salon App</h1>
+<h1>Hair Salon</h1>
 
-<div class="container">
-  <a href="/stylists">View All Stylists</a>
-  <a href="/stylists/new">Add New Stylist</a>
-</div>
+<p>Create a new stylist:</p>
+
+<form action="/stylists" method="post">
+  <label for="name">Stylist name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add stylist</button>
+</form>
+
+<p> Add clients to any stylist:</p>
+
+<form action="/clients" method="post">
+  <label for="stylist_id">Select a Stylist</label>
+<select id='stylist_id' name='stylist_id' type='text'>
+  <% @stylists.each() do |stylist| %>
+    <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+  <% end %>
+</select>
+
+  <label for="name">Name of the client:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add client</button>
+</form>
+
+
+<% if @stylists.any?() %>
+<p>Click on a stylist to see its clients:</p>
+
+<ul>
+  <% @stylists.each do |stylist| %>
+  <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no stylists yet!</p>
+<% end %>
