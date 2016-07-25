@@ -38,7 +38,7 @@ describe(Client) do
     expect(client1).to(eq(client2))
     end
   end
-end
+
 
 describe("#update") do
     it("lets you update clients in the database") do
@@ -48,3 +48,15 @@ describe("#update") do
       expect(list.name()).to(eq("Alan"))
     end
   end
+
+  describe("#delete") do
+    it("lets you delete a client from the database") do
+      client = Client.new({:name => "Client guy", :id => nil})
+      client.save()
+      client2 = Client.new({:name => "Bob", :id => nil})
+      client2.save()
+      client.delete()
+      expect(Client.all()).to(eq([client2]))
+    end
+  end
+end
