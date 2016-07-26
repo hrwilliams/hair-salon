@@ -1,10 +1,9 @@
-#_employees-projects_
+#_hair_salon_
 
-####This is a web application in which the user can enter words and definitions and the program will return all words and their definitions. This is an exercise in object-oriented Ruby.
 
 ## Technologies Used
 
-Application: Ruby, Sinatra, Active Record<br>
+Application: Ruby, Sinatra<br>
 Testing: Rspec, Capybara<br>
 Database: Postgres
 
@@ -31,4 +30,4 @@ Navigate to `localhost:4567` in browser.
 License
 -------
 
-GNU GPL v2. Copyright 2015 **HR Williams**
+GNU GPL v2. Copyright 2016 **HR Williams**
