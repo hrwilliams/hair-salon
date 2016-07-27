@@ -41,14 +41,14 @@ describe(Client) do
 
   describe(".find") do
       it "returns a client by its ID" do
-        test_client = Client.new({:name => "Eduardo", :stylist_id => 1, :id => nil})
+        test_client = Client.new({:name => "Hair", :stylist_id => 1, :id => nil})
         test_client.save()
-        test_client2 = Client.new({:name => "Edu", :stylist_id => 1, :id => nil})
+        test_client2 = Client.new({:name => "Harry", :stylist_id => 1, :id => nil})
         test_client2.save()
         expect(Client.find(test_client2.id())).to(eq(test_client2))
       end
     end
-    
+
 describe("#update") do
     it("lets you update clients in the database") do
       client = Client.new({:name => "Arnold", :stylist_id => 1, :id => nil})
@@ -60,9 +60,9 @@ describe("#update") do
 
   describe("#delete") do
     it("lets you delete a client from the database") do
-      client = Client.new({:name => "Client guy", :id => nil})
+      client = Client.new({:name => "Client guy", :stylist_id => 1, :id => nil})
       client.save()
-      client2 = Client.new({:name => "Bob", :id => nil})
+      client2 = Client.new({:name => "Bob", :stylist_id => 1, :id => nil})
       client2.save()
       client.delete()
       expect(Client.all()).to(eq([client2]))

@@ -24,7 +24,7 @@ end
 get("/stylists/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
   @stylist_clients = Client.all()
-  # client = Client.find(params.fetch("id").to_i())
+  @client = Client.find(params.fetch("id").to_i())
   erb(:stylist)
 end
 
