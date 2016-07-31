@@ -46,3 +46,26 @@ describe('adding clients to a stylist', {:type => :feature}) do
     expect(page).to have_content("Hair Bag")
   end
 end
+
+describe('update a stylist', {:type => :feature}) do
+  it("allows the user to edit the stylist name")do
+  test_stylist = Stylist.new({:name => 'barber', :id => nil})
+  test_stylist.save()
+  visit("/")
+  click_link 'barber'
+  click_link 'Edit barber stylist'
+  fill_in('name', :with => 'BARBER')
+  click_button 'Update'
+  expect(page).to have_content 'BARBER'
+  end
+
+  it("allows the user to delete a stylist") do
+    test_stylist = Stylist.new({:name => 'barber', :id => nil})
+    test_stylist.save()
+    visit '/'
+    click_link 'barber'
+    click_link 'Edit barber stylist'
+    click_button 'Delete stylist'
+    expect(page).to have_no_content 'barber'
+  end
+end
