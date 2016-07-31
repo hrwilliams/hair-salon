@@ -14,7 +14,7 @@ get("/") do
 end
 
 post("/stylists") do
-  name = params.fetch("name")
+  name = params.fetch("stylist_name")
   stylist = Stylist.new({:name => name, :id => nil})
   stylist.save()
   @stylists = Stylist.all()
@@ -72,4 +72,10 @@ patch("/clients/:id") do
   @client = Client.find(params.fetch("id").to_i())
   @client.update({:name => name})
   erb(:client)
+end
+
+delete("/clients/:id") do
+  @client = Client.find(params.fetch("id").to_i())
+  @client.delete()
+  erb(:success)
 end
